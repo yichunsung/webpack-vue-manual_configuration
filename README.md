@@ -96,7 +96,9 @@ npm run build
 
 ## Chapter 3. 設置.vue打包和Vue-components
 
-1. 安裝 Babel相關套件： **babel-core** 和 **babel-loader** 
+1. 安裝 Babel相關套件用來編譯複雜的js框架中複雜的語法： 
+
+安裝 **babel-core** 和 **babel-loader** 
 ```bat
 npm install babel-core babel-loader --save-dev
 ```
@@ -106,4 +108,40 @@ npm install babel-core babel-loader --save-dev
 npm install babel-preset-env babel-preset-vue --save-dev
 ```
 
+3. 安裝 Vue-loader相關套件，用來協助編譯.vue中的語法和vue template
 
+安裝**vue-loader** **vue-style-loader** **css-loader** **vue-template-compiler**
+```bat
+npm install vue-loader vue-style-loader css-loader vue-template-compiler --save-dev
+```
+
+4. 在`package.json`中把設定處理好，加入以下設定：
+
+```json
+"babel":{
+      		"presets": ["env", "vue"]
+    	},
+```
+
+5. 建議將**babel-loader** 降版至 **7.1.5**，比較不會有問題
+
+```json
+"babel-loader": "^7.1.5",
+```
+
+6. 在專案資料夾目錄下建立一個 webpack 基本設定檔 `webpack.config.js`
+
+依據[webpack官網](https://webpack.js.org)文件設定：[設定指南](https://webpack.js.org/guides/getting-started/#using-a-configuration)
+
+```javascript
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+
+```
