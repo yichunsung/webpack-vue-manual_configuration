@@ -1,7 +1,11 @@
 # 手動建置Webpack-Vue的開發環境
 
-### 作者： Yichun Sung
-### 日期： 2018-10-01
+---
+
+#### 作者： Yichun Sung
+#### 日期： 2018-10-01
+
+---
 
 ## Chapter 0. 前言
 
@@ -9,6 +13,7 @@
 
 因此，雖然有Vue-cli這種好用的工具，但是今天我們想要自虐地自己一步一步手動建置一個可以給Vue開發者開發的Webpack環境。
 
+---
 
 ## Chapter 1. webpack 與 npm 基本安裝
 
@@ -63,6 +68,7 @@ npm run build
 
 沒錯誤的話，就進入下一階段
 
+---
 
 ## Chapter 2. 搭配Vue服用
 
@@ -96,6 +102,8 @@ npm run build
 ![](md_img/hellowebpackandvue.jpg)
 
 有印出來的話，就成功完成了Vue 和 Webpack的基本配置了。
+
+---
 
 ## Chapter 3. 設置.vue打包和Vue-components
 
@@ -312,6 +320,8 @@ npm run build
 
 ![](md_img/finish.png)
 
+
+---
 
 ## Reference
 
