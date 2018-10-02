@@ -72,10 +72,22 @@ npm install vue
 
 ```javascript
 
+import Vue from 'vue'
 
+new Vue({
+  el: '#app',
+  mounted : function(){
+  	console.log('Hello Webpack and Vue !');	 
+  }
+});
 
 ```
 
 3. 重新使用指令打包 ： npm run build
-4. 打開index.html 測試。
+
+4. 打開index.html 測試，開啟開發者介面，查看剛剛寫的有無印出來。
+
+![](md_img/hellowebpackandvue.jpg)
+
+
 
