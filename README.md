@@ -110,7 +110,7 @@ npm install babel-preset-env babel-preset-vue --save-dev
 
 3. 安裝 Vue-loader相關套件，用來協助編譯.vue中的語法和vue template
 
-安裝**vue-loader** **vue-style-loader** **css-loader** **vue-template-compiler**
+安裝**vue-loader**, **vue-style-loader**, **css-loader**, **vue-template-compiler**
 ```bat
 npm install vue-loader vue-style-loader css-loader vue-template-compiler --save-dev
 ```
@@ -145,3 +145,176 @@ module.exports = {
 };
 
 ```
+
+7. 在webpack設定檔中：加入**babel-loader** 設定。
+
+8. 在webpack設定檔中加入 **vue-loader**設定，以及**VueLoaderPlugin**設定，以支援**.vue**檔。
+
+綜合第7點和第8點，完整的設定如下：
+
+
+```javascript
+// webpack.config.js
+const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      // this will apply to both plain `.js` files
+      // AND `<script>` blocks in `.vue` files
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      },
+      // this will apply to both plain `.css` files
+      // AND `<style>` blocks in `.vue` files
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin()
+  ]
+}
+```
+>如果你現在就建立一個vue的元件，然後掛載並且執行 `npm run build`後，會發現打包成功但是打開**index.html**卻沒有畫面，這是因為我們還沒設置模板編譯。
+
+9. 在webpack 基本設定檔中設置模板的編譯，加入以下
+
+```javascript
+resolve: { 
+    		alias: { 
+      			'vue': 'vue/dist/vue.js' 
+    		} 
+  		}
+```
+
+完整的 `webpack.config.js` 如下：
+
+```javascript
+// webpack.config.js
+const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      // this will apply to both plain `.js` files
+      // AND `<script>` blocks in `.vue` files
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      },
+      // this will apply to both plain `.css` files
+      // AND `<style>` blocks in `.vue` files
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin()
+  ],
+  resolve: { 
+    alias: { 
+      'vue': 'vue/dist/vue.js' 
+    } 
+  }
+}
+```
+
+10. 接著在src中建立一個hello.vue檔測試
+
+```vue
+<template>
+  <div class="hello">Hello {{ who }}</div>
+</template>
+
+<script>
+module.exports = {
+  data: function() {
+    return {
+      who: 'Vue and Webpack !!'
+    }
+  }
+};
+</script>
+
+<style scoped>
+.hello {
+  padding: .5em;
+  font-size: 2em;
+  background-color: #fcf;
+}
+</style>
+```
+
+index.js 也掛載這個hello.vue
+
+```javascript
+import Vue from 'vue'
+import hello from './hello.vue'
+
+new Vue({
+  el: '#app',
+  mounted : function(){
+  	console.log('Hello World');
+  	 
+  },
+  components: { hello },
+  template: '<hello/>'
+})
+
+
+```
+
+11. 打包 並且打開 **index.html**測試。
+```bat
+npm run build
+```
+
+12. 成功
+
+![](md_img/finish.png)
+
+
+## Reference
+
+[](https://youtu.be/YN2hwa4_ins)
+[](https://vue-loader.vuejs.org/guide/#manual-configuration)
+[](https://juejin.im/post/5acd890d6fb9a028d043ca15)
+[](https://segmentfault.com/a/1190000005363030)
+[](https://webpack.js.org/guides/getting-started/#using-a-configuration)
+[](https://www.imooc.com/article/17868)
