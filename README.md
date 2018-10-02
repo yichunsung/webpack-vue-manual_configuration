@@ -7,7 +7,7 @@
 因此，雖然有Vue-cli這種好用的工具，但是今天我們想要自虐地自己一步一步手動建置一個可以給Vue開發者開發的Webpack環境。
 
 
-## Chpater webpack 與 npm 基本安裝
+## Chpater 1. webpack 與 npm 基本安裝
 
 1. 安裝 node.js
 2. 建立專案資料夾
@@ -35,7 +35,7 @@ npm install webpack webpack-cli --save-dev
 > /src/Vue原始碼  =={ webpack 轉換 }==> /dist/可執行檔
 
 7. 所以根據上一點在專案目錄中新增 src 資料夾 與 dist 資料夾（Webpack的預設來源資料夾與目的資料夾）
-![](md_image/1-7.jpg)
+![](md_img/1-7.jpg)
 
 8. 在src資料夾中建立一個index.js ，測試打包。使用指令： 
 ```bat
@@ -57,5 +57,10 @@ npm run build
 
 ```
 10. 打開 index.html 測試看看是否成功打開沒有錯誤
+
+沒錯誤的話，就進入下一階段
+
+
+## Chapter 2. 搭配Vue服用
 
 
