@@ -23,7 +23,7 @@
 
 6. 設置 package.json (專案描述檔) 用來執行 webpack
 		
-		```javascript
+		```js
 
 		  "scripts": {
 		    "test": "echo \"Error: no test specified\" && exit 1",
@@ -42,3 +42,5 @@
 	```bat
 	npm run build
 	```
+
+10. 
