@@ -9,13 +9,13 @@
 
 ## Chpater 1. webpack 與 npm 基本安裝
 
-1. 安裝 node.js
+1. 安裝 **node.js**
 2. 建立專案資料夾
 3. 初始化node.js 專案 
 ```bat
 npm init -y
 ```
-4. 使用 npm 安裝 webpack, webpack-cli:
+4. 使用 npm 安裝 **webpack**, **webpack-cli**:
 ```bat 
 npm install webpack webpack-cli --save-dev 
 ```
@@ -34,15 +34,15 @@ npm install webpack webpack-cli --save-dev
 
 > /src/Vue原始碼  =={ webpack 轉換 }==> /dist/可執行檔
 
-7. 所以根據上一點在專案目錄中新增 src 資料夾 與 dist 資料夾（Webpack的預設來源資料夾與目的資料夾）
+7. 所以根據上一點在專案目錄中新增 **src** 資料夾 與 **dist** 資料夾（Webpack的預設來源資料夾與目的資料夾）
 ![](md_img/1-7.jpg)
 
-8. 在src資料夾中建立一個index.js ，測試打包。使用指令： 
+8. 在**src**資料夾中建立一個**index.js** ，測試打包。使用指令： 
 ```bat
 npm run build
 ```
 
-9. 在 dist資料夾中建立一個 index.html，並且在當中引入main.js
+9. 在 dist資料夾中建立一個 **index.html**，並且在當中引入**main.js**
 ```html
 <!DOCTYPE html>
 <html>
@@ -56,19 +56,19 @@ npm run build
 </html>
 
 ```
-10. 打開 index.html 測試看看是否成功打開沒有錯誤
+10. 打開 **index.html** 測試看看是否成功打開沒有錯誤
 
 沒錯誤的話，就進入下一階段
 
 
 ## Chapter 2. 搭配Vue服用
 
-1. 使用npm 安裝 Vue 
+1. 使用npm 安裝 **Vue**
 ```bat
 npm install vue
 ```
 
-2. 使用Vue 寫點東西測試，在index.js上 import Vue。
+2. 使用Vue 寫點東西測試，**在index.js上 import Vue**。
 
 ```javascript
 
@@ -83,11 +83,27 @@ new Vue({
 
 ```
 
-3. 重新使用指令打包 ： npm run build
+3. 重新使用指令打包 ： 
+```bat
+npm run build
+```
 
-4. 打開index.html 測試，開啟開發者介面，查看剛剛寫的有無印出來。
+4. 打開**index.html** 測試，開啟開發者介面，查看剛剛寫的有無印出來。
 
 ![](md_img/hellowebpackandvue.jpg)
 
+有印出來的話，就成功完成了Vue 和 Webpack的基本配置了。
+
+## Chapter 3. 設置.vue打包和Vue-components
+
+1. 安裝 Babel相關套件： **babel-core** 和 **babel-loader** 
+```bat
+npm install babel-core babel-loader --save-dev
+```
+
+2. 安裝 **babel-preset-env** 和 **babel-preset-vue**
+```bat
+npm install babel-preset-env babel-preset-vue --save-dev
+```
 
 
