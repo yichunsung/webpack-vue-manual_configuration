@@ -20,7 +20,7 @@ npm init -y
 npm install webpack webpack-cli --save-dev 
 ```
 
-5. 設置 package.json (專案描述檔) 用來執行 webpack
+5. 設置 package.json (專案描述檔) 用來執行 webpack，在`"scripts"`中加入build的規則。
 		
 ```json
 "scripts": {
@@ -35,6 +35,8 @@ npm install webpack webpack-cli --save-dev
 > /src/Vue原始碼  =={ webpack 轉換 }==> /dist/可執行檔
 
 7. 所以根據上一點在專案目錄中新增 src 資料夾 與 dist 資料夾（Webpack的預設來源資料夾與目的資料夾）
+![](md_image/1-7.jpg)
+
 8. 在src資料夾中建立一個index.js ，測試打包。使用指令： 
 ```bat
 npm run build

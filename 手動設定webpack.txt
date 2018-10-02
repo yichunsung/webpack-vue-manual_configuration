@@ -1,0 +1,84 @@
+1. Webpack 基本安裝與使用
+	
+	1-1. 安裝 node.js
+	1-2. 建立專案資料夾
+	1-3. 使用終端機介面
+	1-4. 初始化node.js 專案 `npm init -y`
+	1-5. 使用 npm 安裝 webpack, webpack-cli:
+		` npm install webpack webpack-cli --save-dev `
+
+	1-6. 設置 package.json (專案描述檔) 用來執行 webpack
+		"
+		  "scripts": {
+		    "test": "echo \"Error: no test specified\" && exit 1",
+		    "build": "webpack"
+		  },
+		"
+	1-7. 基本專案資料夾結構與運作概念：
+		/src/Vue原始碼  =={ webpack 轉換 }==> /dist/可執行檔
+	
+	1-8. 新增 src 資料夾 與 dist 資料夾
+	
+	1-9. 在src資料夾中建立一個index.js ，測試打包。使用指令： npm run build
+
+	1-10. 在 dist資料夾中建立一個 index.html
+
+	1-11. 打開 index.html 測試看看是否成功打開沒有錯誤
+
+
+
+2. 搭配 Vue 服用
+	
+	2-1. 使用npm 安裝 Vue 
+	2-2. 使用Vue 寫點東西測試，在index.js上 import Vue。
+	2-3. 重新使用指令打包 ： npm run build
+	2-4. 打開index.html 測試。
+
+
+3. 使用Vue-components (components.vue)
+
+	3-1. 安裝 Babel , babel-core babel-loader 
+	npm install babel-core babel-loader --save-dev
+
+	3-2. 安裝 babel-preset-env babel-preset-vue
+	npm install babel-preset-env babel-preset-vue --save-dev
+
+	3-3. 安裝 vue-loader vue-style-loader css-loader vue-template-compile
+	npm install vue-loader vue-style-loader css-loader vue-template-compile --save-dev
+
+	3-4. 在專案描述檔中把設定處理好
+		"babel":{
+      		"presets": ["env", "vue"]
+    	},
+
+    3-5. 在專案描述檔中重設 babel-loader 降版至 7.1.5 以相容babel-core (不確定何時會改進)
+
+    3-6. 建立 webpack 基本設定檔 webpack.config.js
+
+    3-7. 在webpack 基本設定檔中：加入babel-loader 設定。
+
+    3-8. 在webpack 基本設定檔中加入 vue-loader設定，以及VueLoaderPlugin設定，以支援.vue檔，
+
+    3-9. 在webpack 基本設定檔中設置模板的編譯，加入：
+
+    	resolve: { 
+    		alias: { 
+      			'vue': 'vue/dist/vue.js' 
+    		} 
+  		}
+
+  		這樣就可以把build出來的檔案直接開啟。
+
+    3-10. 測試成功
+
+
+4. 參考資料
+
+	4-1. https://vue-loader.vuejs.org/guide/#manual-configuration
+	4-2. https://juejin.im/post/5acd890d6fb9a028d043ca15
+	4-3. https://segmentfault.com/a/1190000005363030
+	4-4. https://webpack.js.org/guides/getting-started/#using-a-configuration
+	4-5. https://www.imooc.com/article/17868
+
+
+
