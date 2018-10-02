@@ -2,7 +2,7 @@
 
 ## 前言
 
-發想是來自於彭彭老師在9/24的[Webpack 建置 React 開發環境教學直播](https://youtu.be/YN2hwa4_ins)。
+發想是來自於[彭彭老師](https://training.pada-x.com)在9/24的[Webpack 建置 React 開發環境教學直播](https://youtu.be/YN2hwa4_ins)。
 
 因此，雖然有Vue-cli這種好用的工具，但是今天我們想要自虐地自己一步一步手動建置一個可以給Vue開發者開發的Webpack環境。
 
