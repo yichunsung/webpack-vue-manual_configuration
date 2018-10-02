@@ -63,4 +63,19 @@ npm run build
 
 ## Chapter 2. 搭配Vue服用
 
+1. 使用npm 安裝 Vue 
+```bat
+npm install vue
+```
+
+2. 使用Vue 寫點東西測試，在index.js上 import Vue。
+
+```javascript
+
+
+
+```
+
+3. 重新使用指令打包 ： npm run build
+4. 打開index.html 測試。
 
