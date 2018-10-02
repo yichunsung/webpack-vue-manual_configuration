@@ -1,31 +1,28 @@
 # 手動建置Webpack-Vue的開發環境
 
-### 作者： Yichun Sung
-### 日期： 2018-10-01
-
-## Chapter 0. 前言
+## 前言
 
 發想是來自於[彭彭老師](https://training.pada-x.com)在9/24的[Webpack 建置 React 開發環境教學直播](https://youtu.be/YN2hwa4_ins)。
 
 因此，雖然有Vue-cli這種好用的工具，但是今天我們想要自虐地自己一步一步手動建置一個可以給Vue開發者開發的Webpack環境。
 
 
-## Chapter 1. webpack 與 npm 基本安裝
+## Chpater 1. webpack 與 npm 基本安裝
 
 1. 安裝 **node.js**
 2. 建立專案資料夾
 3. 初始化node.js 專案 
-```bat
+```{bat}
 npm init -y
 ```
 4. 使用 npm 安裝 **webpack**, **webpack-cli**:
-```bat 
+```{bat} 
 npm install webpack webpack-cli --save-dev 
 ```
 
 5. 設置 package.json (專案描述檔) 用來執行 webpack，在`"scripts"`中加入build的規則。
 		
-```json
+```{json}
 "scripts": {
 	"test": "echo \"Error: no test specified\" && exit 1",
 	"build": "webpack"
@@ -41,12 +38,12 @@ npm install webpack webpack-cli --save-dev
 ![](md_img/1-7.jpg)
 
 8. 在**src**資料夾中建立一個**index.js** ，測試打包。使用指令： 
-```bat
+```{bat}
 npm run build
 ```
 
 9. 在 dist資料夾中建立一個 **index.html**，並且在當中引入**main.js**
-```html
+```{html}
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,13 +64,13 @@ npm run build
 ## Chapter 2. 搭配Vue服用
 
 1. 使用npm 安裝 **Vue**
-```bat
+```{bat}
 npm install vue
 ```
 
 2. 使用Vue 寫點東西測試，**在index.js上 import Vue**。
 
-```javascript
+```{javascript}
 
 import Vue from 'vue'
 
@@ -87,7 +84,7 @@ new Vue({
 ```
 
 3. 重新使用指令打包 ： 
-```bat
+```{bat}
 npm run build
 ```
 
@@ -102,25 +99,25 @@ npm run build
 1. 安裝 Babel相關套件用來編譯複雜的js框架中複雜的語法： 
 
 安裝 **babel-core** 和 **babel-loader** 
-```bat
+```{bat}
 npm install babel-core babel-loader --save-dev
 ```
 
 2. 安裝 **babel-preset-env** 和 **babel-preset-vue**
-```bat
+```{bat}
 npm install babel-preset-env babel-preset-vue --save-dev
 ```
 
 3. 安裝 Vue-loader相關套件，用來協助編譯.vue中的語法和vue template
 
 安裝**vue-loader**, **vue-style-loader**, **css-loader**, **vue-template-compiler**
-```bat
+```{bat}
 npm install vue-loader vue-style-loader css-loader vue-template-compiler --save-dev
 ```
 
 4. 在`package.json`中把設定處理好，加入以下設定：
 
-```json
+```{json}
 "babel":{
       		"presets": ["env", "vue"]
     	},
@@ -128,7 +125,7 @@ npm install vue-loader vue-style-loader css-loader vue-template-compiler --save-
 
 5. 建議將**babel-loader** 降版至 **7.1.5**，比較不會有問題
 
-```json
+```{json}
 "babel-loader": "^7.1.5",
 ```
 
@@ -136,7 +133,7 @@ npm install vue-loader vue-style-loader css-loader vue-template-compiler --save-
 
 依據[webpack官網](https://webpack.js.org)文件設定：[設定指南](https://webpack.js.org/guides/getting-started/#using-a-configuration)
 
-```javascript
+```{javascript}
 const path = require('path');
 
 module.exports = {
@@ -156,7 +153,7 @@ module.exports = {
 綜合第7點和第8點，完整的設定如下：
 
 
-```javascript
+```{javascript}
 // webpack.config.js
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -201,7 +198,7 @@ module.exports = {
 
 9. 在webpack 基本設定檔中設置模板的編譯，加入以下
 
-```javascript
+```{javascript}
 resolve: { 
     		alias: { 
       			'vue': 'vue/dist/vue.js' 
@@ -211,7 +208,7 @@ resolve: {
 
 完整的 `webpack.config.js` 如下：
 
-```javascript
+```{javascript}
 // webpack.config.js
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -260,7 +257,7 @@ module.exports = {
 
 10. 接著在src中建立一個hello.vue檔測試
 
-```vue
+```{vue}
 <template>
   <div class="hello">Hello {{ who }}</div>
 </template>
@@ -286,7 +283,7 @@ module.exports = {
 
 index.js 也掛載這個hello.vue
 
-```javascript
+```{javascript}
 import Vue from 'vue'
 import hello from './hello.vue'
 
@@ -304,7 +301,7 @@ new Vue({
 ```
 
 11. 打包 並且打開 **index.html**測試。
-```bat
+```{bat}
 npm run build
 ```
 
