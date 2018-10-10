@@ -1,5 +1,17 @@
 <template>
-  <div class="hello">Hello {{ who }}</div>
+  <div class="app">
+    <div>
+      <div class="hello">
+        Hello {{ who }}
+      </div>
+      <div class="router">
+        <router-view/>
+      </div>
+    </div>
+    
+  	
+  </div>
+  
 </template>
 
 <script>
@@ -13,9 +25,19 @@ module.exports = {
 </script>
 
 <style scoped>
+.app{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .hello {
   padding: .5em;
   font-size: 2em;
   background-color: #fcf;
 }
+.router{
+  background-color: #fff;
+  font-size: 14px;
+}
+
 </style>

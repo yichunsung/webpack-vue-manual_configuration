@@ -4,8 +4,10 @@
 	1-2. 建立專案資料夾
 	1-3. 使用終端機介面
 	1-4. 初始化node.js 專案 `npm init -y`
-	1-5. 使用 npm 安裝 webpack, webpack-cli:
+	1-5. 使用 npm 安裝 webpack, webpack-cli, webpack-dev-server, webpack-merge:
 		` npm install webpack webpack-cli --save-dev `
+
+		**` npm install webpack-dev-server webpack-merge --save-dev `
 
 	1-6. 設置 package.json (專案描述檔) 用來執行 webpack
 		"

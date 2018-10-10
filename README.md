@@ -121,9 +121,9 @@ npm install babel-preset-env babel-preset-vue --save-dev
 
 3. 安裝 Vue-loader相關套件，用來協助編譯.vue中的語法和vue template
 
-安裝**vue-loader**, **vue-style-loader**, **css-loader**, **vue-template-compiler**
+安裝**vue-loader**, **vue-style-loader**, **css-loader**, **file-loader**, **vue-template-compiler**
 ```bat
-npm install vue-loader vue-style-loader css-loader vue-template-compiler --save-dev
+npm install vue-loader vue-style-loader css-loader file-loader vue-template-compiler --save-dev
 ```
 
 4. 在`package.json`中把設定處理好，加入以下設定：
@@ -161,6 +161,8 @@ module.exports = {
 
 8. 在webpack設定檔中加入 **vue-loader**設定，以及**VueLoaderPlugin**設定，以支援**.vue**檔。
 
+9. 在webpack設定檔中加入 **file-loader**設定，用以打包圖片檔等檔案。
+
 綜合第7點和第8點，完整的設定如下：
 
 
@@ -196,6 +198,13 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
+        }
       }
     ]
   },
@@ -207,7 +216,7 @@ module.exports = {
 ```
 >如果你現在就建立一個vue的元件，然後掛載並且執行 `npm run build`後，會發現打包成功但是打開**index.html**卻沒有畫面，這是因為我們還沒設置模板編譯。
 
-9. 在webpack 基本設定檔中設置模板的編譯，加入以下
+10. 在webpack 基本設定檔中設置模板的編譯，加入以下
 
 ```javascript
 resolve: { 
@@ -266,7 +275,7 @@ module.exports = {
 }
 ```
 
-10. 接著在src中建立一個hello.vue檔測試
+11. 接著在src中建立一個hello.vue檔測試
 
 ```vue
 <template>
@@ -311,12 +320,12 @@ new Vue({
 
 ```
 
-11. 打包 並且打開 **index.html**測試。
+12. 打包 並且打開 **index.html**測試。
 ```bat
 npm run build
 ```
 
-12. 成功
+13. 成功
 
 ![](md_img/finish.png)
 

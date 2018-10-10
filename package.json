@@ -2,7 +2,7 @@
   "name": "webpack-vue-manual_configuration",
   "version": "1.0.0",
   "description": "## 前言",
-  "main": "index.js",
+  "main": "app.js",
   "babel": {
     "presets": [
       "env",
@@ -30,13 +30,18 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-vue": "^2.0.2",
     "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
     "vue-loader": "^15.4.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "express": "^4.16.3",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
   }
 }
