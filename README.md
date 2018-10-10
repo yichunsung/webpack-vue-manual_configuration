@@ -163,7 +163,7 @@ module.exports = {
 
 9. 在webpack設定檔中加入 **file-loader**設定，用以打包圖片檔等檔案。
 
-綜合第7點和第8點，完整的設定如下：
+綜合第7點,第8點和第9點，完整的設定如下：
 
 
 ```javascript
